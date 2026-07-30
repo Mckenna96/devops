@@ -5,3 +5,5 @@ Ayyyyooooo.
 [![LICENSE](https://img.shields.io/github/license/Mckenna96/devops.svg?style=flat-square)](https://github.com/Mckenna96/devops/blob/master/LICENSE)
 
 [![Releases](https://img.shields.io/github/release/Mckenna96/devops/all.svg?style=flat-square)](https://github.com/Mckenna96/devops/releases)
+
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/Mckenna96/devops/main.yml/<branch>?style=flat-square)
