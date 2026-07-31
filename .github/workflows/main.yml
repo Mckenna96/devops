@@ -21,14 +21,12 @@ jobs:
       - name: Build with Maven
         run: mvn clean package
 
-      - name: Check target contents
-        run: ls -la target
-
-      - name: Check current directory
-        run:
+      - name: Check files before Docker build
+        run: |
           pwd
           ls -la
-          ls -la target/fodtwareEmethods-0.1.0.2-jar-with-dependencies.jar
+          ls -la target
+          ls -la target/softwareEmethods-0.1.0.2-jar-with-dependencies.jar
 
       - name: Build Docker Image
         run: docker build -t diskimage .
