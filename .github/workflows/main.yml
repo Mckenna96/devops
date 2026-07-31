@@ -24,11 +24,17 @@ jobs:
       - name: Check target contents
         run: ls -la target
 
+      - name: Check current directory
+        run:
+          pwd
+          ls -la
+          ls -la target
+
       - name: Build Docker Image
-        run: docker build -t devopsimage .
+        run: docker build -t DiskImage .
 
       - name: Run image
-        run: docker run --name devopscontainer -d devopsimage
+        run: docker run --name containerised -d DiskImage
 
       - name: View logs
-        run: docker logs devopscontainer
+        run: docker logs containerised
