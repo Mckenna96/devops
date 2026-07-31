@@ -2,17 +2,16 @@ package com.napier.sem.db_models;
 
 public class Country
 {
-    private int code;
+    public String code;
 
-    private String name;
+    public String name;
 
-    private String continent;
+    public String continent;
 
-    private String region;
+    public String region;
 
-    private int population;
+    public int population;
 
-    private String capital;
-
+    public int capital;
 
 }
