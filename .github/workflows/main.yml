@@ -28,7 +28,7 @@ jobs:
         run:
           pwd
           ls -la
-          ls -la target
+          ls -la target/fodtwareEmethods-0.1.0.2-jar-with-dependencies.jar
 
       - name: Build Docker Image
         run: docker build -t DiskImage .
