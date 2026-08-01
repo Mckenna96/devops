@@ -13,4 +13,6 @@ public class Country
     public int population;
 
     public int capital;
+
+    public String capitalName;
 }

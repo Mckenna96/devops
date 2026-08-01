@@ -19,8 +19,11 @@ public class App
 
             Database_queries queries = new Database_queries(a.getConnection());
             //individual queries
-            System.out.println("===Countries by Population===");
+            System.out.println("=== Countries by Population ===");
             queries.getCountriesByPop();
+
+            System.out.println("\n=== Countries ===");
+            queries.getCountries();
 
             System.out.println("\n=== City Report ===");
             queries.getCities();
@@ -30,6 +33,9 @@ public class App
 
             System.out.println("\n=== Cities by Population ===");
             queries.getCitiesByPop();
+
+            System.out.println("\n=== Languages ===");
+            queries.getLanguages();
 
 
         }

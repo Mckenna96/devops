@@ -2,61 +2,92 @@ package com.napier.sem;
 
 import com.napier.sem.db_models.Country;
 import com.napier.sem.db_models.City;
+import com.napier.sem.db_models.CountryLanguage;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Database_queries
-{
+public class Database_queries {
     private Connection con;
-    public Database_queries(Connection con)
-    {
+
+    public Database_queries(Connection con) {
         this.con = con;
     }
-//Country reports
-    public List<Country> getCountriesByPop()
-    {
+
+    //Country reports
+    public List<Country> getCountriesByPop() {
         List<Country> countriesByPop = new ArrayList<>();
-        try
-    {
-        PreparedStatement stmt = con.prepareStatement(
-                "SELECT Name, Population " +
-                        "FROM country " +
-                        "ORDER BY Population DESC"
-                );
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT Name, Population " +
+                            "FROM country " +
+                            "ORDER BY Population DESC"
+            );
 
-        ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
 
-        while (rs.next())
-        {
-            System.out.println(
-                    rs.getString("Name") + " : " + rs.getInt("Population"));
+            while (rs.next()) {
+                System.out.println(
+                        rs.getString("Name") + " : " + rs.getInt("Population"));
 
-            Country country = new Country();
-            country.name = rs.getString("Name");
-            country.population = rs.getInt("Population");
+                Country country = new Country();
+                country.name = rs.getString("Name");
+                country.population = rs.getInt("Population");
 
-            countriesByPop.add(country);
+                countriesByPop.add(country);
 
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
+        return countriesByPop;
     }
-    catch (SQLException e)
-    {
-        System.out.println(e.getMessage());
-    }
-    return countriesByPop;
+
+    public List<Country> getCountries() {
+        List<Country> countries = new ArrayList<>();
+
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT country.code, country.name, country.continent, country.region, country.population, city.name AS Capital " +
+                            "FROM country " +
+                            "LEFT JOIN city ON country.Capital = city.ID " +
+                            "ORDER BY country.Name ASC"
+
+            );
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Country country = new Country();
+                City capital = new City();
+
+                country.code = rs.getString("Code");
+                country.name = rs.getString("Name");
+                country.continent = rs.getString("Continent");
+                country.region = rs.getString("Region");
+                country.population = rs.getInt("Population");
+                country.capitalName = rs.getString("Capital");
+
+                countries.add(country);
+
+                System.out.println(
+                        country.code + " | " + country.name + " | " + country.continent + " | " + country.region + " | " + country.population + " | " + country.capitalName
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return countries;
     }
 
     //City reports
 
-    public List<City> getCities()
-    {
+    public List<City> getCities() {
         List<City> cities = new ArrayList<>();
 
-        try
-        {
+        try {
             PreparedStatement stmt = con.prepareStatement(
                     "SELECT Name, CountryCode, District, Population " +
                             "FROM city " +
@@ -66,8 +97,7 @@ public class Database_queries
 
             ResultSet rs = stmt.executeQuery();
 
-            while(rs.next())
-            {
+            while (rs.next()) {
                 City city = new City();
 
                 city.name = rs.getString("Name");
@@ -81,17 +111,14 @@ public class Database_queries
                         city.name + " | " + city.countryCode + " | " + city.district + " | " + city.population
                 );
             }
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
         return cities;
     }
 
 
-    public List<City> getCapitalsByPop()
-    {
+    public List<City> getCapitalsByPop() {
         List<City> capitalsByPop = new ArrayList<>();
         try {
             PreparedStatement stmt = con.prepareStatement(
@@ -99,65 +126,92 @@ public class Database_queries
                             "FROM country " +
                             "JOIN city ON country.Capital = city.ID " +
                             "ORDER BY city.Population DESC"
-                    );
+            );
 
-                    ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
 
-                    while (rs.next())
-                    {
-                        City capital = new City();
+            while (rs.next()) {
+                City capital = new City();
 
-                        capital.ID = rs.getInt("ID");
-                        capital.name = rs.getString("Name");
-                        capital.population = rs.getInt("Population");
+                capital.ID = rs.getInt("ID");
+                capital.name = rs.getString("Name");
+                capital.population = rs.getInt("Population");
 
-                        capitalsByPop.add(capital);
+                capitalsByPop.add(capital);
 
-                        System.out.println(
-                                capital.name + " : " + capital.population
-                        );
+                System.out.println(
+                        capital.name + " : " + capital.population
+                );
 
-                    }
-                }
-                catch (SQLException e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                return capitalsByPop;
             }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return capitalsByPop;
+    }
 
 
-public void getCitiesByPop()
-{
-    List<City> citiesByPop = new ArrayList<>();
-    try
-    {
-        PreparedStatement stmt = con.prepareStatement(
-                "SELECT Name, Population " +
-                        "FROM city " +
-                        "ORDER BY Population DESC"
-        );
+    public void getCitiesByPop() {
+        List<City> citiesByPop = new ArrayList<>();
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT Name, Population " +
+                            "FROM city " +
+                            "ORDER BY Population DESC"
+            );
 
-        ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
 
-        while (rs.next())
-        {
-            System.out.println(
-                    rs.getString("Name") + " : " + rs.getInt("Population"));
+            while (rs.next()) {
+                System.out.println(
+                        rs.getString("Name") + " : " + rs.getInt("Population"));
 
-            City city = new City();
-            city.name = rs.getString("Name");
-            city.population = rs.getInt("Population");
+                City city = new City();
+                city.name = rs.getString("Name");
+                city.population = rs.getInt("Population");
 
-            citiesByPop.add(city);
+                citiesByPop.add(city);
 
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
-    catch (SQLException e)
-    {
-        System.out.println(e.getMessage());
+//language report
+
+    public List<CountryLanguage> getLanguages() {
+        List<CountryLanguage> languages = new ArrayList<>();
+        try {
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT countrylanguage.Language, " +
+                            " SUM(country.Population * countrylanguage.Percentage / 100) AS Speakers, " +
+                            "(SUM(country.population * countrylanguage.Percentage / 100) / " +
+                            "(SELECT SUM(population) FROM country)) * 100 AS WorldPercentage " +
+                            "FROM country " +
+                            "JOIN countrylanguage ON country.Code = countrylanguage.CountryCode " +
+                            "WHERE countrylanguage.Language IN ('Chinese', 'English', 'Spanish') " +
+                            "GROUP BY countrylanguage.Language " +
+                            "ORDER BY Speakers DESC"
+            );
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                CountryLanguage language = new CountryLanguage();
+
+                language.language = rs.getString("Language");
+                language.speakers = rs.getLong("Speakers");
+                language.worldPercentage = rs.getDouble("WorldPercentage");
+
+                languages.add(language);
+
+                System.out.println(
+                        language.language + " | " + language.speakers + " | " + String.format("%.2f", language.worldPercentage) + "%"
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return languages;
     }
-}
-
-
 }

@@ -4,6 +4,7 @@ services:
     build: .
     environment:
       DB_HOST: db
+      DB_PORT: 3306
     depends_on:
         - db
 

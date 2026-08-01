@@ -1,10 +1,14 @@
 package com.napier.sem.db_models;
 
 public class CountryLanguage {
-    private String countryCode;
+    public String countryCode;
 
-    private String language;
+    public String language;
 
-    private double population;
+    public double population;
+
+    public long speakers;
+
+    public double worldPercentage;
 
 }
