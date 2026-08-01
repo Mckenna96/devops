@@ -22,6 +22,9 @@ public class App
             System.out.println("===Countries by Population===");
             queries.getCountriesByPop();
 
+            System.out.println("\n=== City Report ===");
+            queries.getCities();
+
             System.out.println("\n=== Capitals by Population ===");
             queries.getCapitalsByPop();
 

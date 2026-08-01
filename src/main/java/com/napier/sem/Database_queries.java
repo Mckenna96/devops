@@ -2,7 +2,6 @@ package com.napier.sem;
 
 import com.napier.sem.db_models.Country;
 import com.napier.sem.db_models.City;
-import com.napier.sem.db_models.CountryLanguage;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -51,6 +50,46 @@ public class Database_queries
     }
 
     //City reports
+
+    public List<City> getCities()
+    {
+        List<City> cities = new ArrayList<>();
+
+        try
+        {
+            PreparedStatement stmt = con.prepareStatement(
+                    "SELECT Name, CountryCode, District, Population " +
+                            "FROM city " +
+                            "ORDER BY name ASC"
+
+            );
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next())
+            {
+                City city = new City();
+
+                city.name = rs.getString("Name");
+                city.countryCode = rs.getString("CountryCode");
+                city.district = rs.getString("District");
+                city.population = rs.getInt("Population");
+
+                cities.add(city);
+
+                System.out.println(
+                        city.name + " | " + city.countryCode + " | " + city.district + " | " + city.population
+                );
+            }
+        }
+        catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return cities;
+    }
+
+
     public List<City> getCapitalsByPop()
     {
         List<City> capitalsByPop = new ArrayList<>();
@@ -88,7 +127,7 @@ public class Database_queries
             }
 
 
-public List<City> getCitiesByPop()
+public void getCitiesByPop()
 {
     List<City> citiesByPop = new ArrayList<>();
     try
@@ -118,7 +157,6 @@ public List<City> getCitiesByPop()
     {
         System.out.println(e.getMessage());
     }
-    return citiesByPop;
 }
 
 
