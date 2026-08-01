@@ -18,7 +18,17 @@ public class App
         if (a.getConnection() != null) {
 
             Database_queries queries = new Database_queries(a.getConnection());
+            //individual queries
+            System.out.println("===Countries by Population===");
             queries.getCountriesByPop();
+
+            System.out.println("\n=== Capitals by Population ===");
+            queries.getCapitalsByPop();
+
+            System.out.println("\n=== Cities by Population ===");
+            queries.getCitiesByPop();
+
+
         }
         else {
             System.out.println("No database connection found");
@@ -48,8 +58,9 @@ public class App
                 Thread.sleep(30000);
 
                 String host = System.getenv().getOrDefault("DB_HOST", "localhost");
+                String port = System.getenv().getOrDefault("DB_PORT", "33060");
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://" + host + ":3306/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }

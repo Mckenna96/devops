@@ -1,14 +1,14 @@
 package com.napier.sem.db_models;
 
 public class City {
-    private int ID;
+    public int ID;
 
-    private String name;
+    public String name;
 
-    private String countryCode;
+    public String countryCode;
 
-    private String district;
+    public String district;
 
-    private int population;
+    public int population;
 
 }
