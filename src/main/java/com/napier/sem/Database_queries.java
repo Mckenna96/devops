@@ -3,6 +3,8 @@ package com.napier.sem;
 import com.napier.sem.db_models.Country;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Database_queries
@@ -14,35 +16,37 @@ public class Database_queries
     }
 
 
-    public Country getCountry(String name)
+    public List<Country> getCountriesByPop()
     {
-    try
+        List<Country> countriesByPop = new ArrayList<>();
+        try
     {
         PreparedStatement stmt = con.prepareStatement(
-                "SELECT Name, Code, Population, Capital " +
-                        "FROM country WHERE Name = ?");
-
-        stmt.setString(1, name);
+                "SELECT Name, Population " +
+                        "FROM country " +
+                        "ORDER BY Population DESC"
+                );
 
         ResultSet rs = stmt.executeQuery();
 
-        if (rs.next())
+        while (rs.next())
         {
-            Country country = new Country();
+            System.out.println(
+                    rs.getString("Name") + " : " + rs.getInt("Population"));
 
-            country.code = rs.getString("Code");
+            Country country = new Country();
             country.name = rs.getString("Name");
             country.population = rs.getInt("Population");
-            country.capital = rs.getInt("Capital");
 
-            return country;
+            countriesByPop.add(country);
+
         }
     }
     catch (SQLException e)
     {
         System.out.println(e.getMessage());
     }
-    return null;
+    return countriesByPop;
     }
 }
 

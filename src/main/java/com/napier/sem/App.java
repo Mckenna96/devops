@@ -2,14 +2,23 @@ package com.napier.sem;
 
 import java.sql.*;
 
+
 public class App
 {
     private Connection con = null;
+    public Connection getConnection()
+    {
+        return con;
+    }
 
     public static void main(String[] args) {
         App a = new App();
 
         a.connect();
+
+        Database_queries queries = new Database_queries(a.getConnection());
+        queries.getCountriesByPop();
+
         a.disconnect();
     }
 
