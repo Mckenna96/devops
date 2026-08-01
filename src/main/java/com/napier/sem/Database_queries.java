@@ -15,7 +15,6 @@ public class Database_queries
         this.con = con;
     }
 
-
     public List<Country> getCountriesByPop()
     {
         List<Country> countriesByPop = new ArrayList<>();

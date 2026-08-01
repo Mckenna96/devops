@@ -13,5 +13,4 @@ public class Country
     public int population;
 
     public int capital;
-
 }

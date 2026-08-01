@@ -10,4 +10,5 @@ public class City {
     private String district;
 
     private int population;
+
 }

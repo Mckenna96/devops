@@ -6,4 +6,5 @@ public class CountryLanguage {
     private String language;
 
     private double population;
+
 }
