@@ -1,6 +1,5 @@
 read me
-Ayyyyooooo.
-![workflow](https://github.com/Mckenna96/devops/actions/workflows/main.yml/badge.svg)
+![workflow](https://github.com/Mckenna96/devops/actions/workflows/master.yml/badge.svg)
 
 [![LICENSE](https://img.shields.io/github/license/Mckenna96/devops.svg?style=flat-square)](https://github.com/Mckenna96/devops/blob/master/LICENSE)
 
