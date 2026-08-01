@@ -1,5 +1,5 @@
 package com.napier.sem;
-
+//importing models for queries
 import com.napier.sem.db_models.Country;
 import com.napier.sem.db_models.City;
 import com.napier.sem.db_models.CountryLanguage;
@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//database queries class
 public class Database_queries {
     private Connection con;
 
@@ -17,6 +17,7 @@ public class Database_queries {
     }
 
     //Country reports
+    //countries population report
     public List<Country> getCountriesByPop() {
         List<Country> countriesByPop = new ArrayList<>();
         try {
@@ -45,6 +46,7 @@ public class Database_queries {
         return countriesByPop;
     }
 
+    //country report
     public List<Country> getCountries() {
         List<Country> countries = new ArrayList<>();
 
@@ -83,7 +85,7 @@ public class Database_queries {
     }
 
     //City reports
-
+//city report
     public List<City> getCities() {
         List<City> cities = new ArrayList<>();
 
@@ -117,7 +119,7 @@ public class Database_queries {
         return cities;
     }
 
-
+//capital population report
     public List<City> getCapitalsByPop() {
         List<City> capitalsByPop = new ArrayList<>();
         try {
@@ -150,7 +152,7 @@ public class Database_queries {
         return capitalsByPop;
     }
 
-
+//cities population report
     public void getCitiesByPop() {
         List<City> citiesByPop = new ArrayList<>();
         try {
@@ -178,7 +180,7 @@ public class Database_queries {
         }
     }
 //language report
-
+//world population and percentage report for languages
     public List<CountryLanguage> getLanguages() {
         List<CountryLanguage> languages = new ArrayList<>();
         try {
