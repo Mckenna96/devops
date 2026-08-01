@@ -1,0 +1,8 @@
+FROM mysql/mysql-server:latest
+
+WORKDIR /tmp
+
+COPY world_dataset/world.sql /docker-entrypoint-initdb.d/
+
+ENV MYSQL_ROOT_PASSWORD=example
+ENV MYSQL_ROOT_HOST=%
