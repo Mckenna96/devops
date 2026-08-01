@@ -16,8 +16,14 @@ public class App
 
         a.connect();
 
-        Database_queries queries = new Database_queries(a.getConnection());
-        queries.getCountriesByPop();
+        if (a.getConnection() != null) {
+
+            Database_queries queries = new Database_queries(a.getConnection());
+            queries.getCountriesByPop();
+        }
+        else {
+            System.out.println("No database connection found");
+        }
 
         a.disconnect();
     }
@@ -41,8 +47,10 @@ public class App
                 {
                 // Wait a bit for db to start
                 Thread.sleep(30000);
+
+                String host = System.getenv().getOrDefault("DB_HOST", "localhost");
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://" + host + ":33060/world?allowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
