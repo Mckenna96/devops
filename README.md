@@ -5,4 +5,4 @@ read me
 
 [![Releases](https://img.shields.io/github/release/Mckenna96/devops/all.svg?style=flat-square)](https://github.com/Mckenna96/devops/releases)
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Mckenna96/devops/master.yml?branch=develop&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Mckenna96/devops/main.yml?branch=develop&style=flat-square)
