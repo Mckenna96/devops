@@ -1,0 +1,19 @@
+services:
+
+  app:
+    build: .
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+    depends_on:
+        - db
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile_dataset
+    restart: always
+    ports:
+      - "33060:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: example
