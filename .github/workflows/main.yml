@@ -1,6 +1,7 @@
 name: A workflow for my coursework
 on: push
 
+
 jobs:
   build:
     name: Coursework action
