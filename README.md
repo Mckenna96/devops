@@ -11,11 +11,11 @@ However I was confused as to what the requirements were if it was originally 32.
 So if general country and city reports we're a part of them, then I have 4 out of 8 which would be 50%.
 
 
-|   ID    |             Name                    |   Met |       Screenshot             |
-|:-------:|:-----------------------------------:|:-----:|:----------------------------:|
-|1   | All countries in the world organised largest to smallest population | Yes | [Image](countries%20by%20pop.png) |
-|2   | All cities in the world organised largest to smallest population | Yes | [Image](cities%20by%20pop.png)>   |
-|3   | All capitals in the world organized largest to smallest population | Yes | [Image](capital%20by%20pop.png) |
-|4   | People who speak Chinese, English & Spanish, largest to smallest with percentage | Yes | [Image](languages.png) |
-|5   | Country report    | Yes | [Image](countries.png) |
-|6   | City Report | Yes | [Image](cities.png) |
+|   ID    |             Name                    |   Met |          Screenshot           |
+|:-------:|:-----------------------------------:|:-----:|:-----------------------------:|
+|1   | All countries in the world organised largest to smallest population | Yes | [Image](countries-by-pop.png) |
+|2   | All cities in the world organised largest to smallest population | Yes |  [Image](cities-by-pop.png)   |
+|3   | All capitals in the world organized largest to smallest population | Yes |  [Image](capital-by-pop.png)  |
+|4   | People who speak Chinese, English & Spanish, largest to smallest with percentage | Yes |    [Image](languages.png)     |
+|5   | Country report    | Yes |    [Image](countries.png)     |
+|6   | City Report | Yes |      [Image](cities.png)      |
