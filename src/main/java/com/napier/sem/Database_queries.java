@@ -153,7 +153,7 @@ public class Database_queries {
     }
 
 //cities population report
-    public void getCitiesByPop() {
+    public List<City> getCitiesByPop() {
         List<City> citiesByPop = new ArrayList<>();
         try {
             PreparedStatement stmt = con.prepareStatement(
@@ -178,6 +178,7 @@ public class Database_queries {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return citiesByPop;
     }
 //language report
 //world population and percentage report for languages
