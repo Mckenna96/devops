@@ -20,10 +20,16 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
-        run: mvn clean package
+        run: mvn clean package -DskipTests
 
       - name: Run docker compose
-        run: docker compose up --abort-on-container-exit
+        run: docker compose up -d
+
+      - name: Wait for database
+        run: sleep 20
+
+      - name: MyTest
+        run: mvn -Dtest=com.napier.sem.MyTest test
 
       - name: Build Docker Image
         run: docker build -t diskimage .
@@ -34,10 +40,5 @@ jobs:
       - name: View logs
         run: docker logs containerised
 
-      - name: MyTest
-        run: mvn -Dtest=com.napier.sem.MyTest test
 
-      - name: Package and Run docker compose
-        run: |
-            mvn package -DskipTests
-            docker compose up --abort-on-container-exit
+
