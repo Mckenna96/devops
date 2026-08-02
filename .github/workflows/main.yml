@@ -1,9 +1,9 @@
-name: A workflow for my Hello World App
+name: A workflow for my coursework
 on: push
 
 jobs:
   build:
-    name: Hello world action
+    name: Coursework action
     runs-on: ubuntu-22.04
 
     steps:
@@ -32,3 +32,11 @@ jobs:
 
       - name: View logs
         run: docker logs containerised
+
+      - name: MyTest
+        run: mvn -Dtest=com.napier.sem.MyTest test
+
+      - name: Package and Run docker compose
+        run: |
+            mvn package -DskipTests
+            docker compose up --abort-on-container-exit
