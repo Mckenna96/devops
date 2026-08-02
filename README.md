@@ -6,4 +6,3 @@
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Mckenna96/devops/main.yml?branch=master&style=flat-square)
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Mckenna96/devops/main.yml?branch=develop&style=flat-square)
